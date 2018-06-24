@@ -1,4 +1,4 @@
 /.gradle/
-/Gradle-Tutorial/bin
-/Gradle-Tutorial/buildSrc/build/
-/Gradle-Tutorial/buildSrc/.gradle/
+/bin
+/buildSrc/build/
+/buildSrc/.gradle/
