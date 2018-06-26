@@ -1,0 +1,43 @@
+// https://gradle-ssh-plugin.github.io/docs/
+
+def gvppDumpFolder = '/Shares/Databases/Dump'
+
+remotes {
+	gvppServer {
+		host = '10.1.0.35'
+		user = 'root'
+		password = 'T0R1Fjan'
+		knownHosts = allowAnyHosts
+	}
+	DatabaseS71 {
+		host = '172.28.177.105'
+		user = 'oracle'
+		password = 'strata'
+		knownHosts = allowAnyHosts
+	}
+}
+
+task copyDbDumpFile { description "Copy dump file from database server to GVPP-Server (${gvppDumpFolder}) folder." }
+
+copyDbDumpFile << {
+
+	def dumpFileName = 'initial-empty.dmp'
+	def databaseServer = 'DatabaseS71'
+
+	ssh.run {
+		session(remotes[databaseServer]) {
+			get from: "/oracle12c/admin/ORCL/dpdump/${dumpFileName}", into: "${temporaryDir}/${dumpFileName}"
+		}
+	}
+
+	ssh.run {
+		session(remotes.gvppServer) {
+			put from: "${temporaryDir}/${dumpFileName}", into: "${gvppDumpFolder}/${dumpFileName}"
+		}
+	}
+}
+
+
+task listDatabaseServers { description "Print the list of database servers (ignore gvppServer)" }
+
+listDatabaseServers << { println remotes.names }

@@ -9,7 +9,10 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+	id 'org.hidetake.ssh' version '2.9.0'
 }
+
+apply from: 'ssh-copy.gradle'
 
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
