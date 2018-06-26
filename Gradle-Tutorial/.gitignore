@@ -2,4 +2,4 @@
 /bin
 /buildSrc/build/
 /buildSrc/.gradle/
-/build
+/build/
