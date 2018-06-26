@@ -1,5 +1,5 @@
-/.gradle/
+/.gradle
 /bin
-/buildSrc/build/
-/buildSrc/.gradle/
-/build/
+/buildSrc/build
+/buildSrc/.gradle
+/build
