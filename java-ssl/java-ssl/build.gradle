@@ -20,6 +20,8 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+    
+    compile 'com.google.guava:guava:25.1-jre'
 }
 
 // In this section you declare where to find the dependencies of your project
