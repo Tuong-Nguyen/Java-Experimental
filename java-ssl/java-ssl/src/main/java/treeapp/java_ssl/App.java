@@ -16,10 +16,7 @@ import com.google.common.io.CharStreams;
  */
 public class App {
 	public static void main(String[] args) throws MalformedURLException, IOException {
-		String url = "https://www.google.com";
-		App app = new App();
-		String output = app.getPage(url);
-		System.out.println(output);
+		System.out.println(new App().getPage("https://www.google.com"));
 	}
 
 	public String getPage(String url) throws IOException, MalformedURLException {

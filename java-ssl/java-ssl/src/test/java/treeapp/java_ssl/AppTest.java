@@ -26,11 +26,6 @@ public class AppTest {
 
 	@Test
 	public void getPage_TrustedCertificate_DoNotThrowException() throws Exception {
-		App app = new App();
-		String url = "https://www.google.com";
-
-		String output = app.getPage(url);
-
-		assertThat(output, not(isEmptyString()));
+		assertThat(new App().getPage("https://www.google.com"), not(isEmptyString()));
 	}
 }
