@@ -33,7 +33,7 @@ public class WebSocketServer {
 		WebSocketServer webSocketServer = new WebSocketServer();
 		webSocketServer.setHost("localhost");
 		webSocketServer.setPort(8443);
-		webSocketServer.setKeyStoreResource(new FileResource(WebSocketServer.class.getResource("/keystore.jks")));
+		webSocketServer.setKeyStoreResource(Resource.newResource(WebSocketServer.class.getResource("/keystore.jks")));
 		webSocketServer.setKeyStorePassword("password");
 		webSocketServer.setKeyManagerPassword("password");
 		webSocketServer.addWebSocket(MyWebSocket.class, "/");
