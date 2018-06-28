@@ -3,8 +3,6 @@ package treeapp.java_ssl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.eclipse.jetty.http.HttpVersion;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.HttpConfiguration;
@@ -14,7 +12,6 @@ import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.SslConnectionFactory;
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.HandlerCollection;
-import org.eclipse.jetty.util.resource.FileResource;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.websocket.server.WebSocketHandler;
@@ -51,7 +48,8 @@ public class WebSocketServer {
 		SslConnectionFactory sslConnectionFactory = new SslConnectionFactory(sslContextFactory,
 				HttpVersion.HTTP_1_1.asString());
 		HttpConnectionFactory httpConnectionFactory = new HttpConnectionFactory(new HttpConfiguration());
-		ServerConnector sslConnector = new ServerConnector(server, sslConnectionFactory, httpConnectionFactory);
+//		ServerConnector sslConnector = new ServerConnector(server, sslConnectionFactory, httpConnectionFactory);
+		ServerConnector sslConnector = new ServerConnector(server, httpConnectionFactory);
 		sslConnector.setHost(host);
 		sslConnector.setPort(port);
 		server.addConnector(sslConnector);
